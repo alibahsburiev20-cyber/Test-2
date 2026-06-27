@@ -1,0 +1,276 @@
+/* ============ HERO-2 — diagonal text + overflowing schema ============ */
+.phero {
+  min-height: 92vh;
+  position: relative;
+  padding-top: 96px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+}
+
+.phero__text {
+  position: relative;
+  z-index: 2;
+  padding: 60px var(--edge) 60px;
+  max-width: 640px;
+}
+
+.phero__text .eyebrow {
+  margin-bottom: 18px;
+}
+
+.phero__text h1 {
+  font-size: clamp(2.2rem, 5.6vw, 4rem);
+  line-height: 1.05;
+}
+
+.phero__text h1 .line2 {
+  display: block;
+  margin-left: clamp(0px, 8vw, 90px);
+  color: var(--rust);
+}
+
+.phero__text p {
+  margin-top: 26px;
+  font-size: 1.05rem;
+  max-width: 42ch;
+  opacity: 0.85;
+}
+
+.phero__schema {
+  position: absolute;
+  right: -6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56%;
+  max-width: 620px;
+  z-index: 1;
+  opacity: 0.92;
+}
+
+@media (max-width: 1000px) {
+  .phero__schema {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 0;
+    padding: 0 var(--edge) 48px;
+  }
+  .phero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .phero__text h1 .line2 {
+    margin-left: 0;
+  }
+}
+
+/* ============ ARCHITECTURE — three uneven layered columns ============ */
+.layers {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.layers__head {
+  margin-bottom: 56px;
+  max-width: 60ch;
+}
+
+.layers__head h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  margin-bottom: 14px;
+}
+
+.layers__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.2fr 0.9fr;
+  gap: 0;
+  position: relative;
+}
+
+.layer {
+  border: 1px solid var(--rule);
+  padding: 30px 26px;
+  position: relative;
+  background: var(--paper);
+}
+
+.layer + .layer {
+  border-left: none;
+}
+
+.layer--mid {
+  background: var(--paper-dim);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.layer__no {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--rust);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.layer h3 {
+  font-size: 1.25rem;
+  margin-bottom: 14px;
+}
+
+.layer p {
+  font-size: 0.92rem;
+  opacity: 0.82;
+  margin-bottom: 16px;
+}
+
+.layer__spec {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--pine);
+  border-top: 1px dashed var(--rule-soft);
+  padding-top: 12px;
+}
+
+@media (max-width: 860px) {
+  .layers__grid {
+    grid-template-columns: 1fr;
+  }
+  .layer {
+    border-left: 1px solid var(--rule) !important;
+    border-top: none;
+  }
+  .layer:first-child {
+    border-top: 1px solid var(--rule);
+  }
+  .layer--mid {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+/* ============ AUDIT — horizontal certificate strip ============ */
+.certs {
+  padding: 90px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-dim);
+}
+
+.certs__head {
+  padding: 0 var(--edge);
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.certs__head h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+  max-width: 22ch;
+}
+
+.certs__track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 0 var(--edge) 16px;
+  scroll-snap-type: x proximity;
+}
+
+.cert {
+  flex: 0 0 auto;
+  width: 260px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 24px;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.cert__top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-bottom: 14px;
+}
+
+.cert h4 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.cert p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.cert__seal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--pine);
+}
+
+.cert__seal--pending {
+  background: var(--brass);
+}
+
+/* ============ FAQ — asymmetric question/answer ============ */
+.qa {
+  padding: 96px 0;
+}
+
+.qa__head {
+  margin-bottom: 48px;
+  max-width: 50ch;
+}
+
+.qa__head h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.4rem);
+}
+
+.qa__row {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  gap: 32px;
+  border-top: 1px solid var(--rule);
+  padding: 28px 0;
+}
+
+.qa__row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.qa__q {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  padding-right: 16px;
+}
+
+.qa__a {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  max-width: 60ch;
+}
+
+.qa__a strong {
+  color: var(--rust);
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .qa__row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
