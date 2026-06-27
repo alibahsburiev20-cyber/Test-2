@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Протокол — Каркас</title>
+<meta name="description" content="Как смарт-контракты Каркаса связаны с реестром недвижимости: оракул оценки, контракт эмиссии долей и контракт распределения аренды.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/protocol.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="survey-rail" aria-hidden="true">
+  <div class="survey-rail__fill"></div>
+  <div class="survey-rail__ticks"></div>
+</div>
+
+<header class="topbar">
+  <a href="index.html" class="topbar__mark">Каркас <span>RWA · СКЛАДЫ И ЦЕХА</span></a>
+  <nav class="topbar__nav" aria-label="Главная навигация">
+    <a href="index.html">Главная</a>
+    <a href="protocol.html" aria-current="page">Протокол</a>
+    <a href="token.html">Токен и DAO</a>
+  </nav>
+  <button class="topbar__burger" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+</header>
+
+<main>
+
+  <!-- ============ HERO-2 ============ -->
+  <section class="phero">
+    <div class="phero__text">
+      <p class="eyebrow">Техническая часть дела</p>
+      <h1>Три контракта держат вес одного<span class="line2">здания</span></h1>
+      <p>Оракул сверяет оценку, реестр фиксирует право, токен делит стоимость на части. Если один контракт остановлен — деньги не теряются, просто новые операции ждут, пока его не перезапустят аудиторы.</p>
+    </div>
+    <svg class="phero__schema" viewBox="0 0 480 420" role="img" aria-label="Схема связи трёх контрактов протокола">
+      <rect x="20" y="20" width="170" height="90" fill="none" stroke="#1C1B19" stroke-width="1.2"/>
+      <text x="32" y="45" font-family="IBM Plex Mono" font-size="11" fill="#1C1B19">Оракул оценки</text>
+      <text x="32" y="65" font-family="IBM Plex Mono" font-size="9" fill="#1C1B19" opacity="0.6">обновление раз в квартал</text>
+
+      <rect x="260" y="120" width="200" height="90" fill="none" stroke="#8A3324" stroke-width="1.2"/>
+      <text x="272" y="145" font-family="IBM Plex Mono" font-size="11" fill="#8A3324">Реестр прав SPV</text>
+      <text x="272" y="165" font-family="IBM Plex Mono" font-size="9" fill="#8A3324" opacity="0.7">привязка к кадастру</text>
+
+      <rect x="40" y="250" width="220" height="90" fill="none" stroke="#3D5A4C" stroke-width="1.2"/>
+      <text x="52" y="275" font-family="IBM Plex Mono" font-size="11" fill="#3D5A4C">Контракт эмиссии долей</text>
+      <text x="52" y="295" font-family="IBM Plex Mono" font-size="9" fill="#3D5A4C" opacity="0.7">номинал 10 000 ₸</text>
+
+      <line x1="190" y1="65" x2="260" y2="150" stroke="#1C1B19" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="260" y1="190" x2="150" y2="250" stroke="#8A3324" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="150" y1="120" x2="150" y2="250" stroke="#1C1B19" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
+
+      <text x="20" y="400" font-family="IBM Plex Mono" font-size="8" fill="#1C1B19" opacity="0.5">схема связей · лист 01 из 02</text>
+    </svg>
+  </section>
+
+  <!-- ============ ARCHITECTURE — uneven layers ============ -->
+  <section class="layers">
+    <div class="container">
+      <div class="layers__head">
+        <p class="eyebrow">Архитектура</p>
+        <h2>Каждый слой может остановиться независимо от других</h2>
+        <p style="opacity:.8; font-size:.95rem;">Это сделано намеренно: если оракул оценки временно недоступен, реестр прав и уже выпущенные доли продолжают работать — просто новых выпусков не происходит, пока оценка не обновится.</p>
+      </div>
+      <div class="layers__grid">
+        <div class="layer reveal">
+          <span class="layer__no">Слой 01</span>
+          <h3>Оракул оценки</h3>
+          <p>Подключает данные аккредитованных оценщиков и публикует подписанную стоимость объекта раз в квартал. Без подписи двух независимых оценщиков значение не принимается.</p>
+          <p class="layer__spec mono">обновление: 4× / год</p>
+        </div>
+        <div class="layer layer--mid reveal">
+          <span class="layer__no">Слой 02</span>
+          <h3>Реестр прав SPV</h3>
+          <p>Связывает кадастровый номер объекта с адресом SPV-контракта. Хранит ссылку на договор аренды и историю изменений права собственности — каждая правка видна публично.</p>
+          <p class="layer__spec mono">сеть: основная + резервная нода кадастра</p>
+        </div>
+        <div class="layer reveal">
+          <span class="layer__no">Слой 03</span>
+          <h3>Контракт эмиссии и распределения</h3>
+          <p>Делит подтверждённую стоимость на доли фиксированного номинала и распределяет арендный доход держателям ежемесячно, без обращения за выплатой.</p>
+          <p class="layer__spec mono">выплаты: автоматически, 1× / месяц</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUDIT — horizontal strip ============ -->
+  <section class="certs">
+    <div class="certs__head">
+      <h2>Что уже проверено внешним аудитором</h2>
+      <span class="ledger__hint mono">← документы дела →</span>
+    </div>
+    <div class="certs__track" tabindex="0" aria-label="Лента документов аудита, доступна горизонтальная прокрутка">
+      <div class="cert">
+        <div class="cert__top"><span>АУДИТ-01</span><span>март 2025</span></div>
+        <span class="cert__seal" aria-hidden="true"></span>
+        <h4>Контракт эмиссии долей</h4>
+        <p>Проверена логика закрытия эмиссии после распродажи номинала — допечатка технически невозможна.</p>
+      </div>
+      <div class="cert">
+        <div class="cert__top"><span>АУДИТ-02</span><span>сентябрь 2025</span></div>
+        <span class="cert__seal" aria-hidden="true"></span>
+        <h4>Контракт распределения аренды</h4>
+        <p>Проверено пропорциональное деление платежей между держателями без округлений в пользу платформы.</p>
+      </div>
+      <div class="cert">
+        <div class="cert__top"><span>АУДИТ-03</span><span>в работе</span></div>
+        <span class="cert__seal cert__seal--pending" aria-hidden="true"></span>
+        <h4>Оракул оценки недвижимости</h4>
+        <p>Проверка устойчивости к расхождению отчётов двух оценщиков — публикация результата на этой странице.</p>
+      </div>
+      <div class="cert">
+        <div class="cert__top"><span>АУДИТ-04</span><span>план 2027</span></div>
+        <span class="cert__seal cert__seal--pending" aria-hidden="true"></span>
+        <h4>Модуль вторичного рынка долей</h4>
+        <p>Аудит логики AML-проверки кошелька перед допуском к внутренней витрине сделок.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ asymmetric ============ -->
+  <section class="qa">
+    <div class="container">
+      <div class="qa__head">
+        <p class="eyebrow">Вопросы по делу</p>
+        <h2>То, что обычно спрашивают перед входом в долю</h2>
+      </div>
+
+      <div class="qa__row reveal">
+        <h3 class="qa__q">Что я держу на самом деле?</h3>
+        <div class="qa__a">Долю в SPV, которой принадлежит конкретный объект — например, склад «Литер Б». Это <strong>не акция Каркаса</strong> и не токен с произвольной эмиссией: количество долей фиксируется на этапе выпуска и привязано к стоимости одного объекта.</div>
+      </div>
+
+      <div class="qa__row reveal">
+        <h3 class="qa__q">Что произойдёт, если арендатор съедет?</h3>
+        <div class="qa__a">Выплаты по этому объекту приостановятся до нового договора аренды — это видно в реестре сразу, без задержки в отчётности. Управляющая компания ищет нового арендатора; срок поиска публикуется в журнале ревизий объекта.</div>
+      </div>
+
+      <div class="qa__row reveal">
+        <h3 class="qa__q">Можно ли выйти раньше срока?</h3>
+        <div class="qa__a">Да, через внутреннюю витрину — продать долю другому верифицированному держателю. Цена сделки определяется покупателем и продавцом напрямую; Каркас не гарантирует обратный выкуп.</div>
+      </div>
+
+      <div class="qa__row reveal">
+        <h3 class="qa__q">Кто отвечает, если оценка окажется неверной?</h3>
+        <div class="qa__a">Подпись ставят два независимых оценщика из аккредитованного реестра — ответственность лежит на них по профессиональной страховке. Каркас публикует отчёты целиком, без сокращений.</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__col">
+    <h5>Каркас</h5>
+    <p style="opacity:.7; max-width:28ch;">Реестр токенизированной промышленной недвижимости. Дело № К-0142.</p>
+  </div>
+  <div class="site-footer__col">
+    <h5>Разделы</h5>
+    <a href="index.html">Главная</a>
+    <a href="protocol.html">Протокол</a>
+    <a href="token.html">Токен и DAO</a>
+  </div>
+  <div class="site-footer__col">
+    <h5>Документы</h5>
+    <a href="#">Отчёты оценщиков</a>
+    <a href="#">Аудит смарт-контрактов</a>
+    <a href="#">Устав DAO</a>
+  </div>
+  <div class="site-footer__col">
+    <h5>Риски</h5>
+    <p style="opacity:.7; max-width:30ch;">Доля в SPV — не банковский вклад. Стоимость объектов и доходность аренды могут снижаться.</p>
+  </div>
+</footer>
+
+<script src="js/common.js"></script>
+</body>
+</html>

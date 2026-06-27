@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Токен и DAO — Каркас</title>
+<meta name="description" content="Эмиссия токена KRK, права держателей долей объектов и устав DAO Каркаса.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/token.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="survey-rail" aria-hidden="true">
+  <div class="survey-rail__fill"></div>
+  <div class="survey-rail__ticks"></div>
+</div>
+
+<header class="topbar">
+  <a href="index.html" class="topbar__mark">Каркас <span>RWA · СКЛАДЫ И ЦЕХА</span></a>
+  <nav class="topbar__nav" aria-label="Главная навигация">
+    <a href="index.html">Главная</a>
+    <a href="protocol.html">Протокол</a>
+    <a href="token.html" aria-current="page">Токен и DAO</a>
+  </nav>
+  <button class="topbar__burger" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+</header>
+
+<main>
+
+  <!-- ============ HERO-3 split with live chart ============ -->
+  <section class="thero">
+    <div class="thero__num">
+      <p class="eyebrow">Токен KRK</p>
+      <h1 class="thero__big">120<sup>млн</sup></h1>
+      <p>Фиксированная эмиссия без допечатки. KRK оплачивает работу реестра и листинг новых объектов — держатели получают часть комиссии платформы, а не часть конкретного склада.</p>
+    </div>
+    <div class="thero__chart">
+      <h3 class="mono">Распределение комиссии за квартал</h3>
+      <div class="thero__canvas-wrap">
+        <canvas id="feeChart" width="600" height="220" role="img" aria-label="Столбчатый график распределения комиссии платформы по кварталам, рост от 11 до 38 у.е. на токен"></canvas>
+      </div>
+      <div class="thero__legend">
+        <span><i style="background:#8A3324"></i> держателям KRK</span>
+        <span><i style="background:#3D5A4C"></i> резерв реестра</span>
+        <span><i style="background:#C9A227"></i> казна DAO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORAGE BOXES — irregular grid ============ -->
+  <section class="boxes">
+    <div class="container">
+      <div class="boxes__head">
+        <p class="eyebrow">Где живут права держателя</p>
+        <h2>Каждая ячейка ниже — отдельный механизм, а не украшение</h2>
+      </div>
+      <div class="boxes__grid">
+
+        <div class="box box--a reveal">
+          <span class="box__rack mono">МЕХАНИЗМ · ГОЛОСОВАНИЕ</span>
+          <div>
+            <h4>1 KRK = 1 голос по новым объектам</h4>
+            <p>Решение о включении нового склада или цеха в портфель выносится на голосование держателей за 14 дней до подписания договора с продавцом.</p>
+          </div>
+        </div>
+
+        <div class="box box--b reveal">
+          <span class="box__rack mono">МЕХАНИЗМ · КОМИССИЯ</span>
+          <div>
+            <h4>40% комиссии платформы — держателям</h4>
+            <p>Выплачивается ежеквартально пропорционально доле в эмиссии, без подачи заявки.</p>
+          </div>
+        </div>
+
+        <div class="box box--c reveal">
+          <span class="box__rack mono">ОГРАНИЧЕНИЕ</span>
+          <h4>Лок команды — 3 года</h4>
+          <p>Доля команды (22%) не может быть продана до марта 2028 — это прописано в самом контракте эмиссии.</p>
+        </div>
+
+        <div class="box box--d reveal">
+          <span class="box__rack mono">ОГРАНИЧЕНИЕ</span>
+          <h4>Порог кворума — 8%</h4>
+          <p>Голосование по новому объекту считается состоявшимся, если проголосовало не менее 8% эмиссии.</p>
+        </div>
+
+        <div class="box box--e reveal">
+          <span class="box__rack mono">ПРОЗРАЧНОСТЬ</span>
+          <h4>Казна DAO публична</h4>
+          <p>Баланс казны и история трат видны в реестре без запроса — адрес контракта указан в уставе.</p>
+        </div>
+
+        <div class="box box--f reveal">
+          <span class="box__rack mono">ВЫХОД</span>
+          <div>
+            <h4>Продажа доли KRK не требует одобрения DAO</h4>
+            <p>В отличие от долей в конкретных объектах, токен KRK торгуется свободно на внутренней витрине и не требует AML-проверки сверх стандартной верификации кошелька.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOLDER RIGHTS — sticky + case list ============ -->
+  <section class="rights">
+    <div class="container">
+      <div class="rights__layout">
+        <div class="rights__sticky">
+          <p class="eyebrow">Права держателя на практике</p>
+          <h2>Что это значит в конкретных делах, а не в теории</h2>
+          <ul>
+            <li>Право голоса по новым объектам</li>
+            <li>Доля в квартальной комиссии</li>
+            <li>Доступ к полному журналу казны</li>
+            <li>Право инициировать аудит</li>
+          </ul>
+        </div>
+        <div class="rights__cases">
+
+          <article class="case reveal">
+            <span class="case__tag mono">ДЕЛО № К-0142-V1</span>
+            <h4>Голосование за объект в Новосибирске не набрало кворум</h4>
+            <p>В первом квартале 2026 года предложение о включении логистического узла в Новосибирске собрало 6,1% голосов при пороге 8% — сделка была отложена на следующий цикл голосования, деньги покупателю не передавались.</p>
+          </article>
+
+          <article class="case reveal">
+            <span class="case__tag mono">ДЕЛО № К-0142-V2</span>
+            <h4>Держатель инициировал внеплановый аудит контракта распределения</h4>
+            <p>После задержки одной из ежемесячных выплат на 4 дня держатель с 0,3% эмиссии запросил внеплановую проверку — по уставу для запроса достаточно 0,1% от эмиссии KRK.</p>
+          </article>
+
+          <article class="case reveal">
+            <span class="case__tag mono">ДЕЛО № К-0142-V3</span>
+            <h4>Казна DAO профинансировала юридическую экспертизу нового региона</h4>
+            <p>2,4 млн ₸ из казны направлено на проверку нормативной базы перед выходом в Татарстан — трата зафиксирована в публичном журнале до перевода средств.</p>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GOVERNANCE — fullscreen quote ============ -->
+  <section class="charter">
+    <span class="charter__mark" aria-hidden="true">§</span>
+    <div class="charter__inner">
+      <p class="eyebrow">Из устава DAO, статья 4</p>
+      <blockquote>
+        Решение о приобретении объекта недвижимости принимается держателями токена KRK, а не командой Каркаса. Команда <em>предлагает</em> объект и публикует отчёт оценщика; держатели <em>решают</em>, входит ли он в портфель.
+      </blockquote>
+      <cite>Устав DAO Каркаса, редакция от 02.2026 · полный текст доступен по запросу в реестре</cite>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__col">
+    <h5>Каркас</h5>
+    <p style="opacity:.7; max-width:28ch;">Реестр токенизированной промышленной недвижимости. Дело № К-0142.</p>
+  </div>
+  <div class="site-footer__col">
+    <h5>Разделы</h5>
+    <a href="index.html">Главная</a>
+    <a href="protocol.html">Протокол</a>
+    <a href="token.html">Токен и DAO</a>
+  </div>
+  <div class="site-footer__col">
+    <h5>Документы</h5>
+    <a href="#">Отчёты оценщиков</a>
+    <a href="#">Аудит смарт-контрактов</a>
+    <a href="#">Устав DAO</a>
+  </div>
+  <div class="site-footer__col">
+    <h5>Риски</h5>
+    <p style="opacity:.7; max-width:30ch;">Доля в SPV — не банковский вклад. Стоимость объектов и доходность аренды могут снижаться.</p>
+  </div>
+</footer>
+
+<script src="js/common.js"></script>
+<script src="js/chart.js"></script>
+</body>
+</html>

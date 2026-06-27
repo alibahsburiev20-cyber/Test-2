@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каркас — токенизация промышленной недвижимости</title>
+<meta name="description" content="Каркас переводит права на склады, цеха и логистические узлы в цифровые доли с открытым кадастровым следом.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="survey-rail" aria-hidden="true">
+  <div class="survey-rail__fill"></div>
+  <div class="survey-rail__ticks"></div>
+</div>
+
+<header class="topbar">
+  <a href="index.html" class="topbar__mark">Каркас <span>RWA · СКЛАДЫ И ЦЕХА</span></a>
+  <nav class="topbar__nav" aria-label="Главная навигация">
+    <a href="index.html" aria-current="page">Главная</a>
+    <a href="protocol.html">Протокол</a>
+    <a href="token.html">Токен и DAO</a>
+  </nav>
+  <button class="topbar__burger" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__left">
+      <p class="hero__kicker">Дело № К-0142 · открыто 2024</p>
+      <h1 class="hero__title">Бетон и сталь, переведённые в <em>доли владения</em></h1>
+      <p class="hero__lede">Каркас регистрирует права на склады, цеха и логистические узлы в индустриальных городах и выпускает под каждый объект цифровую долю — с кадастровым номером, отчётом оценщика и арендным потоком, который виден в реестре, а не на словах.</p>
+      <div class="hero__cta">
+        <a href="protocol.html" class="btn btn--solid">Как устроена проверка объекта</a>
+        <a href="token.html" class="btn">Открыть структуру токена</a>
+      </div>
+    </div>
+    <div class="hero__right">
+      <div class="dossier-card">
+        <div class="dossier-card__head">
+          <h3>Объект «Литер Б»</h3>
+          <span class="dossier-card__id mono">КАД №78:11:0006016:24</span>
+        </div>
+        <dl style="margin:0;">
+          <div class="dossier-row"><dt>Тип</dt><dd>складской комплекс, кл. А</dd></div>
+          <div class="dossier-row"><dt>Площадь</dt><dd>14 220 м²</dd></div>
+          <div class="dossier-row"><dt>Город</dt><dd>Шушары, СПб</dd></div>
+          <div class="dossier-row"><dt>Оценка</dt><dd>₸ 612 000 000</dd></div>
+          <div class="dossier-row"><dt>Доходность аренды</dt><dd>9,4% годовых</dd></div>
+          <div class="dossier-row"><dt>Выпущено долей</dt><dd>61 200 / 61 200</dd></div>
+        </dl>
+        <div class="dossier-card__foot">
+          <div class="stamp" data-stamp-intro>
+            <span class="stamp__title">Проверено</span>
+            <span class="stamp__sub">рег. № 24-0142<br>акт от 11.03.2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MECHANICS — horizontal ledger ============ -->
+  <section class="ledger">
+    <div class="ledger__head">
+      <h2>Как право на цех становится записью в реестре</h2>
+      <span class="ledger__hint mono">← прокрутите ленту →</span>
+    </div>
+    <div class="ledger__track" tabindex="0" aria-label="Лента этапов токенизации, доступна горизонтальная прокрутка">
+      <div class="ledger-card ledger-card--wide">
+        <span class="ledger-card__no">Этап А</span>
+        <h3>Юридическая упаковка объекта</h3>
+        <p>Актив переводится в SPV-структуру, владеющую только этим объектом. Договор аренды, выписка из кадастра и отчёт оценщика прикладываются к делу до выпуска токена, а не после.</p>
+      </div>
+      <div class="ledger-card">
+        <span class="ledger-card__no">Этап Б</span>
+        <h3>Независимая оценка</h3>
+        <p>Оценщик из аккредитованного реестра подписывает отчёт о стоимости. Подпись и дата фиксируются в смарт-контракте оценки.</p>
+      </div>
+      <div class="ledger-card">
+        <span class="ledger-card__no">Этап В</span>
+        <h3>Выпуск долей</h3>
+        <p>Контракт делит стоимость SPV на доли номиналом 10 000 ₸ каждая. Эмиссия закрывается после распродажи — допечатки нет.</p>
+      </div>
+      <div class="ledger-card ledger-card--wide">
+        <span class="ledger-card__no">Этап Г</span>
+        <h3>Распределение арендного потока</h3>
+        <p>Арендные платежи поступают на контракт распределения ежемесячно и автоматически делятся между держателями долей пропорционально их доле — без ручных выплат и заявок.</p>
+      </div>
+      <div class="ledger-card">
+        <span class="ledger-card__no">Этап Д</span>
+        <h3>Вторичный рынок</h3>
+        <p>Доли торгуются на внутренней витрине Каркаса между верифицированными держателями — после AML-проверки кошелька.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ASSETS — asymmetric blueprint + data ============ -->
+  <section class="assets">
+    <div class="container">
+      <div class="assets__grid grid-bg">
+        <div class="assets__visual">
+          <div class="assets__blueprint">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Упрощённый план складского комплекса">
+              <rect x="20" y="20" width="360" height="260" fill="none" stroke="#1C1B19" stroke-width="1.2"/>
+              <line x1="20" y1="120" x2="380" y2="120" stroke="#1C1B19" stroke-width="0.8" stroke-dasharray="4 4"/>
+              <line x1="220" y1="20" x2="220" y2="280" stroke="#1C1B19" stroke-width="0.8" stroke-dasharray="4 4"/>
+              <rect x="40" y="40" width="160" height="60" fill="none" stroke="#8A3324" stroke-width="1"/>
+              <text x="48" y="58" font-family="IBM Plex Mono" font-size="9" fill="#8A3324">блок А · 3 200 м²</text>
+              <rect x="240" y="40" width="120" height="60" fill="none" stroke="#3D5A4C" stroke-width="1"/>
+              <text x="248" y="58" font-family="IBM Plex Mono" font-size="9" fill="#3D5A4C">офис · 410 м²</text>
+              <rect x="40" y="140" width="320" height="120" fill="none" stroke="#1C1B19" stroke-width="1"/>
+              <text x="48" y="158" font-family="IBM Plex Mono" font-size="9" fill="#1C1B19">основной склад · 10 610 м²</text>
+              <circle cx="380" cy="20" r="3" fill="#8A3324"/>
+              <text x="40" y="294" font-family="IBM Plex Mono" font-size="8" fill="#1C1B19" opacity="0.6">М 1:850 · лист 02 из 04</text>
+            </svg>
+          </div>
+          <div class="assets__stamp stamp">
+            <span class="stamp__title">Кадастр</span>
+            <span class="stamp__sub">сверено<br>с Росреестром</span>
+          </div>
+        </div>
+        <div class="assets__data">
+          <p class="eyebrow">Что именно лежит в основе доли</p>
+          <h2>Не обещание, а объект с историей и арендатором</h2>
+          <ul class="assets__list">
+            <li><span>Действующих объектов в портфеле</span><span>11</span></li>
+            <li><span>Суммарная площадь</span><span>96 400 м²</span></li>
+            <li><span>Средняя загрузка арендой</span><span>94%</span></li>
+            <li><span>Город с наибольшей долей</span><span>СПб и ЛО</span></li>
+            <li><span>Срок старшего арендного договора</span><span>7 лет</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOKENOMICS — irregular piles ============ -->
+  <section class="piles">
+    <div class="container">
+      <div class="piles__head">
+        <h2>Эмиссия токена KRK — не доля объекта, а право на инфраструктуру дела</h2>
+        <p>Доли объектов (например, «Литер Б» выше) и токен KRK — два разных контура. KRK оплачивает работу реестра, оценку и листинг новых объектов; держатели получают часть комиссии платформы.</p>
+      </div>
+      <div class="piles__grid">
+        <div class="pile pile--total">
+          <span class="pile__label">Совокупная эмиссия</span>
+          <span class="pile__value">120 000 000 KRK</span>
+        </div>
+        <div class="pile">
+          <span class="pile__label">Резерв реестра</span>
+          <span class="pile__value">34%</span>
+          <div class="pile__bar" style="width:34%"></div>
+        </div>
+        <div class="pile">
+          <span class="pile__label">Команда, лок 3 года</span>
+          <span class="pile__value">22%</span>
+          <div class="pile__bar" style="width:22%"></div>
+        </div>
+        <div class="pile">
+          <span class="pile__label">Публичное размещение</span>
+          <span class="pile__value">20%</span>
+          <div class="pile__bar" style="width:20%"></div>
+        </div>
+        <div class="pile">
+          <span class="pile__label">Партнёры-оценщики</span>
+          <span class="pile__value">14%</span>
+          <div class="pile__bar" style="width:14%"></div>
+        </div>
+        <div class="pile">
+          <span class="pile__label">Казна DAO</span>
+          <span class="pile__value">10%</span>
+          <div class="pile__bar" style="width:10%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROADMAP — sticky + revision log ============ -->
+  <section class="revisions">
+    <div class="container">
+      <div class="revisions__layout">
+        <div class="revisions__sticky">
+          <p class="eyebrow">Журнал ревизий дела</p>
+          <h2>Это не маркетинговый план, а фактический ход проекта</h2>
+          <p>Каждая запись — реальное изменение в реестре или договорах, с датой и статусом. Будущие записи помечены как «в работе» и могут сдвигаться.</p>
+        </div>
+        <div class="revisions__list">
+
+          <article class="revision reveal">
+            <div>
+              <span class="revision__date mono">03.2025</span>
+              <span class="revision__status revision__status--done">закрыто</span>
+            </div>
+            <div>
+              <h3>Регистрация первого SPV и пилотного склада в Шушарах</h3>
+              <p>Объект «Литер Б» прошёл оценку, договор аренды зафиксирован в смарт-контракте распределения.</p>
+            </div>
+          </article>
+
+          <article class="revision reveal">
+            <div>
+              <span class="revision__date mono">09.2025</span>
+              <span class="revision__status revision__status--done">закрыто</span>
+            </div>
+            <div>
+              <h3>Запуск внутренней витрины для вторичных сделок</h3>
+              <p>Держатели долей получили возможность продавать их друг другу после AML-верификации без участия платформы как стороны сделки.</p>
+            </div>
+          </article>
+
+          <article class="revision reveal">
+            <div>
+              <span class="revision__date mono">02.2026</span>
+              <span class="revision__status revision__status--done">закрыто</span>
+            </div>
+            <div>
+              <h3>Портфель расширен до 11 объектов в трёх регионах</h3>
+              <p>Добавлены логистические узлы в Казани и Новосибирске; средняя загрузка арендой по портфелю — 94%.</p>
+            </div>
+          </article>
+
+          <article class="revision reveal">
+            <div>
+              <span class="revision__date mono">10.2026</span>
+              <span class="revision__status revision__status--progress">в работе</span>
+            </div>
+            <div>
+              <h3>Подключение независимого аудитора смарт-контрактов</h3>
+              <p>Полный аудит контракта распределения арендного потока и контракта эмиссии долей — отчёт будет опубликован на странице «Протокол».</p>
+            </div>
+          </article>
+
+          <article class="revision reveal">
+            <div>
+              <span class="revision__date mono">02.2027</span>
+              <span class="revision__status revision__status--progress">в работе</span>
+            </div>
+            <div>
+              <h3>Передача части полномочий держателям KRK</h3>
+              <p>Голосование за принятие новых объектов в портфель переходит от команды к держателям токена через DAO-устав.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA fullscreen ============ -->
+  <section class="closing">
+    <svg class="closing__stamp-big" viewBox="0 0 132 132" aria-hidden="true">
+      <circle cx="66" cy="66" r="62" fill="none" stroke="#C9A227" stroke-width="3"/>
+      <circle cx="66" cy="66" r="50" fill="none" stroke="#C9A227" stroke-width="1"/>
+    </svg>
+    <div class="closing__inner">
+      <h2>Изучите дело, <em>прежде чем</em> войти в долю</h2>
+      <p>Каждый объект Каркаса — это реестровая запись, которую можно сверить с Росреестром, а не презентация. Начните с проверки одного конкретного склада.</p>
+      <div class="hero__cta">
+        <a href="protocol.html" class="btn btn--solid">Открыть протокол проверки</a>
+        <a href="token.html" class="btn">Структура токена KRK</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__col">
+    <h5>Каркас</h5>
+    <p style="opacity:.7; max-width:28ch;">Реестр токенизированной промышленной недвижимости. Дело № К-0142.</p>
+  </div>
+  <div class="site-footer__col">
+    <h5>Разделы</h5>
+    <a href="index.html">Главная</a>
+    <a href="protocol.html">Протокол</a>
+    <a href="token.html">Токен и DAO</a>
+  </div>
+  <div class="site-footer__col">
+    <h5>Документы</h5>
+    <a href="#">Отчёты оценщиков</a>
+    <a href="#">Аудит смарт-контрактов</a>
+    <a href="#">Устав DAO</a>
+  </div>
+  <div class="site-footer__col">
+    <h5>Риски</h5>
+    <p style="opacity:.7; max-width:30ch;">Доля в SPV — не банковский вклад. Стоимость объектов и доходность аренды могут снижаться.</p>
+  </div>
+</footer>
+
+<script src="js/common.js"></script>
+</body>
+</html>
